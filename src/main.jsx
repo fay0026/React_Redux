@@ -1,8 +1,9 @@
 import * as React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+// import Theme from "./components/Theme";
 // eslint-disable-next-line import/no-unresolved
-import "../public/index.css";
+// import "../public/index.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
