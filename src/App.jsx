@@ -1,14 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="app">
-      <header className="app__header header">
-        <h1 className="header__title">Introduction to React</h1>
-      </header>
-      <main className="app__main">main</main>
-      <footer className="app__footer footer">footer</footer>
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 }

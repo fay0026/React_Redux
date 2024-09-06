@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -29,7 +31,7 @@ html, body, #root {
   background-color: #222;
   border-radius: 3px;
   margin: 0 3px;
-  padding: .5em;
+  padding: 0.5em;
   overflow-y: auto;
 }
 
@@ -45,7 +47,7 @@ html, body, #root {
 
 .cards {
   display: grid;
-  grid-gap: .5em;
+  grid-gap: 0.5em;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .card {
@@ -62,24 +64,24 @@ html, body, #root {
 }
 
 .card__header.header__title {
-  padding: .5em;
+  padding: 0.5em;
   align-self: normal;
 }
 .card__main {
   flex: 1;
   background-color: #222;
-  padding: .5em;
+  padding: 0.5em;
   text-align: justify;
 }
 .card.foldable {
-  border-bottom: .5em solid #444;
+  border-bottom: 0.5em solid #444;
   position: relative;
   cursor: pointer;
 }
 .card.foldable::after {
   content: "...";
   position: absolute;
-  bottom: -.55em;
+  bottom: -0.55em;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -88,7 +90,7 @@ html, body, #root {
 }
 .foldable-icon {
   float: right;
-  margin: .25em 0 .25em .5em;
+  margin: 0.25em 0 0.25em 0.5em;
 }
 
 .btn {
@@ -98,9 +100,9 @@ html, body, #root {
   color: #6b8cd9;
   font-size: 1em;
   font-family: inherit;
-  padding: .5em;
+  padding: 0.5em;
   width: 100%;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   cursor: pointer;
 }
 .btn:hover {
@@ -119,7 +121,7 @@ html, body, #root {
   flex-direction: column-reverse;
   justify-content: flex-start;
   box-shadow: -1em 0px 1em #000;
-  gap: .5em;
+  gap: 0.5em;
   overflow-y: auto;
 }
 .notification {
@@ -129,13 +131,13 @@ html, body, #root {
 }
 .notification-icon {
   float: right;
-  margin: .125em 0 .25em .5em;
+  margin: 0.125em 0 0.25em 0.5em;
 }
 .notification:hover .card__header {
   color: #f99;
 }
 .notifications-center {
-  color:#6b8cd9;
+  color: #6b8cd9;
   border: 0 none transparent;
   background-color: transparent;
   font-size: 1em;
