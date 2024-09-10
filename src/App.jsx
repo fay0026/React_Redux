@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import { useState } from "react";
+import { React, useState } from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Main from "./components/Main";
@@ -22,17 +22,17 @@ import useTheme from "./hooks/useTheme";
 }); */
 
 function App() {
-  const [light, setLight] = useState("dark");
+  const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
-  const Theme = useTheme(light);
+  const { theme, change } = useTheme(prefersDark === true ? "dark" : "light");
 
   return (
-    <ThemeProvider theme={Theme.theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="app">
         <Header />
         <Main />
-        <Footer changeLight={setLight} status={light} />
+        <Footer toggleTheme={change} />
       </div>
     </ThemeProvider>
   );

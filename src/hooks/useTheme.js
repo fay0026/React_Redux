@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { createTheme } from "@mui/material/styles";
 
-export default function useShowable(Light) {
-  const [lightMode, switchMode] = useState(Light);
+export default function useShowable(light) {
+  const [currentTheme, switchMode] = useState(light);
 
   const theme = createTheme({
     palette: {
-      mode: lightMode,
+      mode: currentTheme,
       primary: {
         main: "#3f51b5",
       },
@@ -16,17 +16,12 @@ export default function useShowable(Light) {
     },
   });
 
-  function change() {
-    if (lightMode === "light") {
-      switchMode("dark");
-    } else {
-      switchMode("light");
-    }
-  }
-
   return {
-    lightMode,
+    currentTheme,
     theme,
-    change,
+    change: () => {
+      // If currentTheme === "light" then = "dark" else = "light"
+      switchMode(currentTheme === "light" ? "dark" : "light");
+    },
   };
 }

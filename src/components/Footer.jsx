@@ -1,18 +1,15 @@
 import Button from "@mui/material/Button";
 import Mooooooon from "@mui/icons-material/DarkMode";
-import SUN from "@mui/icons-material/LightMode";
 import Notif from "@mui/icons-material/Notifications";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from "prop-types";
 
 import * as React from "react";
 
-export default function ButtonUsage(changeLight, status) {
-  const [light, setLight] = useState(status);
-
-  const clickHandler = () => {};
-
+export default function ButtonUsage({ toggleTheme }) {
   return (
     <footer className="app__footer footer">
-      <Button variant="text" onClick={changeLight}>
+      <Button variant="text" onClick={toggleTheme}>
         <Mooooooon />
       </Button>
       <Button variant="text">
@@ -21,3 +18,11 @@ export default function ButtonUsage(changeLight, status) {
     </footer>
   );
 }
+
+ButtonUsage.propTypes = {
+  toggleTheme: PropTypes.func,
+};
+
+ButtonUsage.defaultProps = {
+  toggleTheme: null,
+};
