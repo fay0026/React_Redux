@@ -1,4 +1,7 @@
 import { createContext } from "react";
 
-// eslint-disable-next-line no-unused-vars
-const themeContext = createContext("light");
+const ThemeContext = createContext();
+
+// const ThemeContext = createContext({ currentTheme, theme, change } = useShowable(ThemeContext));
+
+export default ThemeContext;

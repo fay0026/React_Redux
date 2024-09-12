@@ -1,28 +1,25 @@
 import Button from "@mui/material/Button";
 import Mooooooon from "@mui/icons-material/DarkMode";
+import Flare from "@mui/icons-material/Flare";
 import Notif from "@mui/icons-material/Notifications";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from "prop-types";
-
 import * as React from "react";
+import ThemeContext from "../context/theme";
 
-export default function ButtonUsage({ toggleTheme }) {
+export default function ButtonUsage() {
+  const { currentTheme, change } = React.useContext(ThemeContext);
+
+  const boutonModeOfLight =
+    currentTheme === "light" ? <Mooooooon /> : <Flare />;
+
   return (
     <footer className="app__footer footer">
-      <Button variant="text" onClick={toggleTheme}>
-        <Mooooooon />
+      <Button variant="text" onClick={change}>
+        {boutonModeOfLight}
       </Button>
+
       <Button variant="text">
         <Notif />
       </Button>
     </footer>
   );
 }
-
-ButtonUsage.propTypes = {
-  toggleTheme: PropTypes.func,
-};
-
-ButtonUsage.defaultProps = {
-  toggleTheme: null,
-};
