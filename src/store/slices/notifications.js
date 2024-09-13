@@ -10,6 +10,8 @@ const notificationSlice = createSlice({
       // On retourne notre state, dans lequel on
       // créé un nouveau tableau, en l'associant à l'ancien emplacement.
       // Ce tableau est nouvellement créé à partir du payload.
+      // ... est le spreader, et permet d'accéder aux éléments d'un tableau
+      // sans le modifier.
       return {
         ...state,
         notifList: [...state.notifList, { ...action.payload }],
