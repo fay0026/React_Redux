@@ -25,7 +25,6 @@ export default function useShowable() {
     change: () => {
       // If currentTheme === "light" then = "dark" else = "light"
       switchMode(currentTheme === "light" ? "dark" : "light");
-      console.log("test wesh wesh");
     },
   };
 }
