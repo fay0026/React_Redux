@@ -1,9 +1,9 @@
 import Button from "@mui/material/Button";
 import Mooooooon from "@mui/icons-material/DarkMode";
 import Flare from "@mui/icons-material/Flare";
-import Notif from "@mui/icons-material/Notifications";
 import * as React from "react";
 import ThemeContext from "../context/theme";
+import NotifButton from "./NotificationsButton";
 
 export default function ButtonUsage() {
   const { currentTheme, change } = React.useContext(ThemeContext);
@@ -17,9 +17,7 @@ export default function ButtonUsage() {
         {boutonModeOfLight}
       </Button>
 
-      <Button variant="text">
-        <Notif />
-      </Button>
+      <NotifButton />
     </footer>
   );
 }
