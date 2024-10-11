@@ -16,41 +16,40 @@ export default function ButtonUsage() {
       <Button
         variant="outlined"
         onClick={() => {
-          dispatch(
-            create({
-              id: counter,
-              content: "ERROR",
-              type: <Alert severity="error" />,
-              isDisplayed: true,
-            }),
-          );
+          dispatch({
+            id: counter,
+            content: "ERROR",
+            type: <Alert severity="error" />,
+            isDisplayed: true,
+          });
           counter += 1;
         }}
       >
         <DsL />
         ERROR
       </Button>
+
       <Button
         variant="outlined"
         onClick={() => {
-          dispatch(
-            create({
-              id: counter,
-              content: "WARNING",
-              type: <Alert severity="warning" />,
-              isDisplayed: true,
-            }),
-          );
+          dispatch({
+            id: counter,
+            content: "WARNING",
+            type: <Alert severity="warning" />,
+            isDisplayed: true,
+          });
           counter += 1;
         }}
       >
         <Prob />
         WARNING
       </Button>
+
       <Button variant="outlined">
         <Info />
         INFO
       </Button>
+
       <Button variant="outlined">
         <Good />
         SUCCESS
