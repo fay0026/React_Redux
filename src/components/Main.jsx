@@ -4,18 +4,34 @@ import Prob from "@mui/icons-material/ReportProblem";
 import Info from "@mui/icons-material/Info";
 import Good from "@mui/icons-material/ThumbUpAlt";
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import Alert from "@mui/material/Alert";
+import { useDispatch } from "react-redux";
 import { create } from "../store/slices/notifications";
 
 export default function ButtonUsage() {
   const dispatch = useDispatch();
-  const currentState = useSelector((state) => state.notifList);
-  const stored = useSelector((state) => state.lastId);
+  let countErro = 1;
+  let countWarn = 1;
+  let countInfo = 1;
+  let countSucc = 1;
 
   return (
     <main className="app__main">
-      <Button variant="outlined" onClick={() => dispatch({ type: "create" })}>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          dispatch(
+            create({
+              action: {
+                id: countErro,
+                icon: "DsL",
+                content: "error",
+                isDisplayed: true,
+              },
+            }),
+          );
+          countErro += 1;
+        }}
+      >
         <DsL />
         ERROR
       </Button>
@@ -26,26 +42,56 @@ export default function ButtonUsage() {
           dispatch(
             create({
               action: {
-                id: stored,
-                content: "WARNING",
-                // type: <Alert severity="warning" />,
+                id: countWarn,
+                icon: "Prob",
+                content: "warning",
                 isDisplayed: true,
               },
             }),
           );
-          console.log(currentState);
+          countWarn += 1;
         }}
       >
         <Prob />
         WARNING
       </Button>
 
-      <Button variant="outlined">
+      <Button
+        variant="outlined"
+        onClick={() => {
+          dispatch(
+            create({
+              action: {
+                id: countInfo,
+                icon: "Info",
+                content: "info",
+                isDisplayed: true,
+              },
+            }),
+          );
+          countInfo += 1;
+        }}
+      >
         <Info />
         INFO
       </Button>
 
-      <Button variant="outlined">
+      <Button
+        variant="outlined"
+        onClick={() => {
+          dispatch(
+            create({
+              action: {
+                id: countSucc,
+                icon: "Good",
+                content: "success",
+                isDisplayed: true,
+              },
+            }),
+          );
+          countSucc += 1;
+        }}
+      >
         <Good />
         SUCCESS
       </Button>
