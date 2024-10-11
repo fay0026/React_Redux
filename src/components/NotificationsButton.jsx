@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 export default function NotifButton() {
   const stored = useSelector((state) => state.lastId);
+  console.log(stored);
 
   return (
     <Button>

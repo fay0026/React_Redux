@@ -4,27 +4,18 @@ import Prob from "@mui/icons-material/ReportProblem";
 import Info from "@mui/icons-material/Info";
 import Good from "@mui/icons-material/ThumbUpAlt";
 import * as React from "react";
-import { useDispatch } from "react-redux";
-import Alert from "@mui/material/Alert";
+import { useDispatch, useSelector } from "react-redux";
+// import Alert from "@mui/material/Alert";
+import { create } from "../store/slices/notifications";
 
 export default function ButtonUsage() {
   const dispatch = useDispatch();
-  let counter = 0;
+  const currentState = useSelector((state) => state.notifList);
+  const stored = useSelector((state) => state.lastId);
 
   return (
     <main className="app__main">
-      <Button
-        variant="outlined"
-        onClick={() => {
-          dispatch({
-            id: counter,
-            content: "ERROR",
-            type: <Alert severity="error" />,
-            isDisplayed: true,
-          });
-          counter += 1;
-        }}
-      >
+      <Button variant="outlined" onClick={() => dispatch({ type: "create" })}>
         <DsL />
         ERROR
       </Button>
@@ -32,13 +23,17 @@ export default function ButtonUsage() {
       <Button
         variant="outlined"
         onClick={() => {
-          dispatch({
-            id: counter,
-            content: "WARNING",
-            type: <Alert severity="warning" />,
-            isDisplayed: true,
-          });
-          counter += 1;
+          dispatch(
+            create({
+              action: {
+                id: stored,
+                content: "WARNING",
+                // type: <Alert severity="warning" />,
+                isDisplayed: true,
+              },
+            }),
+          );
+          console.log(currentState);
         }}
       >
         <Prob />
