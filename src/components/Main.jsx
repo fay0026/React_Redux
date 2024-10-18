@@ -9,7 +9,6 @@ import { create } from "../store/slices/notifications";
 
 export default function ButtonUsage() {
   const dispatch = useDispatch();
-  let countErro = 1;
   let countWarn = 1;
   let countInfo = 1;
   let countSucc = 1;
@@ -21,15 +20,11 @@ export default function ButtonUsage() {
         onClick={() => {
           dispatch(
             create({
-              action: {
-                id: countErro,
-                icon: "DsL",
-                content: "error",
-                isDisplayed: true,
-              },
+              content: "my_error",
+              isDisplayed: true,
+              type: "error",
             }),
           );
-          countErro += 1;
         }}
       >
         <DsL />

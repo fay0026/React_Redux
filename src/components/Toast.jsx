@@ -2,38 +2,43 @@
 import { Alert, Snackbar } from "@mui/material";
 import PropTypes from "prop-types";
 import * as React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { hide, remove } from "../store/slices/notifications";
 
-export default function Toast({ duration, cacher, supprimer }) {
-  const [open, setOpen] = React.useState(true);
+export default function Toast({ duration }) {
+  const dispatch = useDispatch();
 
-  const stored = useSelector((state) => state.notifList);
-  const id = useSelector((state) => state.lastId);
+  const last = useSelector(
+    (state) => state.notifList[state.notifList.length - 1],
+  );
 
-  const handleClose = () => {
-    setOpen(false);
-    cacher(setOpen);
-  };
-
-  if (stored.length !== 0) {
-    const lastStored = stored[id - 1].action;
-
-    return (
-      <Snackbar open={open} autoHideDuration={duration} onClose={handleClose}>
-        <Alert
-          severity={lastStored.content}
-          onClose={supprimer}
-          variant="filled"
-        >
-          {lastStored.content} {lastStored.id}
-        </Alert>
-      </Snackbar>
-    );
+  if (!last || !last.isDisplayed) {
+    return null;
   }
+
+  return (
+    <Snackbar
+      open
+      autoHideDuration={duration}
+      onClose={() => {
+        dispatch(hide(last.id));
+      }}
+    >
+      <Alert
+        severity={last.type}
+        onClose={() => {
+          dispatch(hide(last.id));
+        }}
+        variant="filled"
+      >
+        {last.content} {last.id}
+      </Alert>
+    </Snackbar>
+  );
 }
 
 Toast.propTypes = {
   duration: PropTypes.number,
-  cacher: PropTypes.func,
-  supprimer: PropTypes.func,
+  hide: PropTypes.func,
+  remove: PropTypes.func,
 };

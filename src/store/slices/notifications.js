@@ -12,13 +12,20 @@ const notificationSlice = createSlice({
       state.notifList.push({ ...action.payload, id: state.lastId });
     },
     hide(state, action) {
-      console.log(action.payload);
-      action.payload(false);
+      // eslint-disable-next-line no-param-reassign
+      state.notifList = state.notifList.map((notification) => {
+        if (notification.id === action.payload) {
+          // eslint-disable-next-line no-param-reassign
+          notification.isDisplayed = false;
+        }
+        return notification;
+      });
     },
     remove(state, action) {
-      state.notifList.pop(action.payload);
       // eslint-disable-next-line no-param-reassign
-      state.lastId -= 1;
+      state.notifList = state.notifList.filter(
+        (notification) => notification.id !== action.payload,
+      );
     },
   },
 });
