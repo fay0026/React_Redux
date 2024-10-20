@@ -6,13 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { hide, remove } from "../store/slices/notifications";
 
 export default function Toast({ duration }) {
+  // possible en créant un useLastNotification dans le store
   const dispatch = useDispatch();
 
-  const last = useSelector(
+  const lastNotif = useSelector(
     (state) => state.notifList[state.notifList.length - 1],
   );
 
-  if (!last || !last.isDisplayed) {
+  if (!lastNotif || !lastNotif.isDisplayed) {
+    // empêche la creation
     return null;
   }
 
@@ -20,18 +22,22 @@ export default function Toast({ duration }) {
     <Snackbar
       open
       autoHideDuration={duration}
-      onClose={() => {
-        dispatch(hide(last.id));
+      onClose={(reason) => {
+        if (reason === "clickaway") {
+          dispatch(hide(lastNotif.id));
+        }
       }}
     >
       <Alert
-        severity={last.type}
-        onClose={() => {
-          dispatch(hide(last.id));
+        severity={lastNotif.type}
+        onClose={(reason) => {
+          if (reason !== "clickaway") {
+            dispatch(remove(lastNotif.id));
+          }
         }}
         variant="filled"
       >
-        {last.content} {last.id}
+        {lastNotif.content} {lastNotif.id}
       </Alert>
     </Snackbar>
   );

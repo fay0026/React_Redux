@@ -16,7 +16,7 @@ export default function NotifButton() {
         </Badge>
       </Button>
 
-      <Toast duration={1000} />
+      <Toast duration={4000} />
     </div>
   );
 }

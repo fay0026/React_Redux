@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { number } from "prop-types";
 
-const initialState = { notifList: [], lastId: 0 };
+// Record possible pour une id par notification
+const initialState = { notifList: [], lastId: 0, isDrawerOpen: false };
 
 const notificationSlice = createSlice({
   name: "notification",
@@ -18,7 +20,6 @@ const notificationSlice = createSlice({
           // eslint-disable-next-line no-param-reassign
           notification.isDisplayed = false;
         }
-        return notification;
       });
     },
     remove(state, action) {
@@ -26,6 +27,12 @@ const notificationSlice = createSlice({
       state.notifList = state.notifList.filter(
         (notification) => notification.id !== action.payload,
       );
+    },
+    reset(state) {
+      state.notifList = [];
+    },
+    toggleDrawer(state) {
+      state.isDrawerOpen = !state.isDrawerOpen;
     },
   },
 });

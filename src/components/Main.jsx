@@ -9,9 +9,6 @@ import { create } from "../store/slices/notifications";
 
 export default function ButtonUsage() {
   const dispatch = useDispatch();
-  let countWarn = 1;
-  let countInfo = 1;
-  let countSucc = 1;
 
   return (
     <main className="app__main">
@@ -20,7 +17,7 @@ export default function ButtonUsage() {
         onClick={() => {
           dispatch(
             create({
-              content: "my_error",
+              content: "error",
               isDisplayed: true,
               type: "error",
             }),
@@ -36,15 +33,11 @@ export default function ButtonUsage() {
         onClick={() => {
           dispatch(
             create({
-              action: {
-                id: countWarn,
-                icon: "Prob",
-                content: "warning",
-                isDisplayed: true,
-              },
+              content: "warning",
+              isDisplayed: true,
+              type: "warning",
             }),
           );
-          countWarn += 1;
         }}
       >
         <Prob />
@@ -56,15 +49,11 @@ export default function ButtonUsage() {
         onClick={() => {
           dispatch(
             create({
-              action: {
-                id: countInfo,
-                icon: "Info",
-                content: "info",
-                isDisplayed: true,
-              },
+              content: "info",
+              isDisplayed: true,
+              type: "info",
             }),
           );
-          countInfo += 1;
         }}
       >
         <Info />
@@ -76,15 +65,11 @@ export default function ButtonUsage() {
         onClick={() => {
           dispatch(
             create({
-              action: {
-                id: countSucc,
-                icon: "Good",
-                content: "success",
-                isDisplayed: true,
-              },
+              content: "success",
+              isDisplayed: true,
+              type: "success",
             }),
           );
-          countSucc += 1;
         }}
       >
         <Good />
